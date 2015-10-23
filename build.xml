@@ -75,6 +75,17 @@
         <javah destdir="c" classpath="${build.classes.dir}">
             <class name="osvr.java.examples.clients.MinimalInit"/>
             <class name="osvr.java.examples.clients.TrackerCallback"/>
+            <class name="osvr.java.examples.TrackerCallbackToJava"/>
+            <class name="osvr.clientkit.ContextWrapper"/>
+            <class name="osvr.clientkit.Interface"/>
+            <class name="osvr.clientkit.InterfaceState"/>
+            <class name="osvr.util.OSVR_DataObject"/>
+            <class name="osvr.util.OSVR_Pose3"/>
+            <class name="osvr.util.OSVR_Quaternion"/>
+            <class name="osvr.util.OSVR_TimeValue"/>
+            <class name="osvr.util.OSVR_Vec3"/>
+            <class name="osvr.util.callback.OSVR_Callback"/>
+            <class name="osvr.util.callback.OSVR_PoseCallback"/>
         </javah>
     </target>
 </project>

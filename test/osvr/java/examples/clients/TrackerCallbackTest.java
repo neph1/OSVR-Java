@@ -5,7 +5,7 @@
  */
 package osvr.java.examples.clients;
 
-import osvr.java.util.LibraryUtil;
+import osvr.java.util.LibraryLoader;
 
 /**
  *
@@ -14,12 +14,15 @@ import osvr.java.util.LibraryUtil;
 public class TrackerCallbackTest {
     
     public static void main(String[] args){
-        LibraryUtil.loadLibraries();
+        LibraryLoader.loadLibraries();
         
         TrackerCallback trackerCallback = new TrackerCallback();
         
         int number = trackerCallback.main();
+        System.out.println(number);
+        trackerCallback = new TrackerCallback();
         
+        number = trackerCallback.main();
         System.out.println(number);
     }
 }

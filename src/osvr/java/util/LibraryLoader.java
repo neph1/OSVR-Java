@@ -11,12 +11,14 @@ import java.io.File;
  * Loads native dlls
  * @author Rickard
  */
-public class LibraryUtil {
+public class LibraryLoader {
     
     private static boolean initialized;
     
     static{
-        
+        if(!initialized){
+            loadLibraries();
+        }
     }
     
     public static void loadLibraries(){

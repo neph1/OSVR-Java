@@ -5,7 +5,7 @@
  */
 package osvr.java.examples.clients;
 
-import osvr.java.util.LibraryUtil;
+import osvr.java.util.LibraryLoader;
 
 /**
  *
@@ -14,7 +14,7 @@ import osvr.java.util.LibraryUtil;
 public class MinimalInitTest {
     
     public static void main(String[] args){
-        LibraryUtil.loadLibraries();
+        LibraryLoader.loadLibraries();
         
         MinimalInit minimalInit = new MinimalInit();
         

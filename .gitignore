@@ -2,3 +2,14 @@
 /dist/
 /nbproject/private/
 /lib
+*.log
+src/osvr/java/examples/TrackerCallbackToJava.java
+src/osvr/util/callback/OSVR_Callback.java
+src/osvr/util/callback/OSVR_PoseCallback.java
+test/osvr/java/examples/clients/TrackerCallbackTest.java
+test/osvr/java/examples/RegisterCallbackTest.java
+test/osvr/java/examples/clients/TrackerCallbackTest.java
+c/osvr_util_callback_OSVR_Callback.h
+c/osvr_util_callback_OSVR_PoseCallback.h
+c/osvr_java_examples_TrackerCallbackToJava.h
+c/osvr_util_callback_OSVR_Callback_CallbackType.h
