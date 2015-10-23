@@ -16,7 +16,7 @@ import osvr.util.OSVR_Vec3;
 public class InterfaceState {
 
     private long nativeHandle;
-    
+    private boolean disposed;
     
     public InterfaceState(){
         initializeNative();
@@ -91,5 +91,19 @@ public class InterfaceState {
         this.nativeHandle = nativeHandle;
     }
     
+    public native void disposeNative();
+    
+    public void dispose(){
+        disposed = true;
+        disposeNative();
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        if(!disposed){
+            dispose();
+        }
+        super.finalize();
+    }
     
 }

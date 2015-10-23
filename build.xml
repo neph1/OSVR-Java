@@ -87,5 +87,9 @@
             <class name="osvr.util.callback.OSVR_Callback"/>
             <class name="osvr.util.callback.OSVR_PoseCallback"/>
         </javah>
+        
+        <copy todir="C:\Users\Rickard\Documents\GitHub\OSVR-Java-Wrapper\">
+            <fileset dir="c"/>
+          </copy>
     </target>
 </project>

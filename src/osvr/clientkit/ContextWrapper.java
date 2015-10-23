@@ -12,6 +12,7 @@ package osvr.clientkit;
 public class ContextWrapper {
     
     private long nativeHandle;
+    private boolean disposed;
     
     public ContextWrapper(){
     }
@@ -40,8 +41,11 @@ public class ContextWrapper {
     
     @Override
     protected void finalize() throws Throwable {
+        if(!disposed){
+            dispose();
+            disposed = true;
+        }
         super.finalize();
-        dispose();
     }
     
     
