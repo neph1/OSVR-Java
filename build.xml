@@ -79,13 +79,17 @@
             <class name="osvr.clientkit.ContextWrapper"/>
             <class name="osvr.clientkit.Interface"/>
             <class name="osvr.clientkit.InterfaceState"/>
+            <class name="osvr.clientkit.OSVR_Surface"/>
+            <class name="osvr.clientkit.OSVR_Eye"/>
+            <class name="osvr.clientkit.OSVR_DisplayConfig"/>
+            <class name="osvr.clientkit.OSVR_Viewer"/>
             <class name="osvr.util.OSVR_DataObject"/>
             <class name="osvr.util.OSVR_Pose3"/>
             <class name="osvr.util.OSVR_Quaternion"/>
             <class name="osvr.util.OSVR_TimeValue"/>
+            <class name="osvr.util.OSVR_Vec2"/>
             <class name="osvr.util.OSVR_Vec3"/>
-            <class name="osvr.util.callback.OSVR_Callback"/>
-            <class name="osvr.util.callback.OSVR_PoseCallback"/>
+            <class name="osvr.util.OSVR_RadialDistortionParameters"/>
         </javah>
         
         <copy todir="C:\Users\Rickard\Documents\GitHub\OSVR-Java-Wrapper\">
