@@ -25,21 +25,35 @@ public class GetPoseStateTest {
         
         ContextWrapper context = new ContextWrapper();
         context.initialize("InterfaceTest");
-        Interface iface;
+        Interface[] iface = new Interface[3];
         InterfaceState ifaceState;
         try{
-            iface = new Interface();
-            context.getInterface("/me/head", iface);
+            iface[0] = new Interface();
+            iface[1] = new Interface();
+            iface[2] = new Interface();
+            context.getInterface("/me/head", iface[0]);
+//            context.getInterface("/me/hand/left", iface[1]);
+//            context.getInterface("/me/hand/right", iface[2]);
             //iface.setNativeHandle(handle);
-            System.out.println("Interface " + iface.getNativeHandle());
-            
+            Thread.sleep(2000);
             ifaceState = new InterfaceState();
-            System.out.println("InterfaceState " + iface.getNativeHandle());
+            
             OSVR_TimeValue timeValue = new OSVR_TimeValue();
             OSVR_Pose3 pose = new OSVR_Pose3();
-            int result = ifaceState.osvrGetPoseState(iface, timeValue, pose);
-            System.out.println("result: " + result);
-            System.out.println("pose vec: " + pose.getTranslation().toString());
+            int i = 0;
+            while(i++ < 20){
+                context.update();
+                timeValue.setMilliSeconds((int)System.currentTimeMillis());
+                int result = ifaceState.osvrGetPoseState(iface[0], timeValue, pose);
+                if(result > 0){
+                    System.out.println("pose vec /me/head: " + pose.getTranslation().toString() + " "  + pose.getRotation().toString());
+                } else {
+                    System.out.println("pose vec /me/head: not valid");
+                }
+                
+                Thread.sleep(400);
+            }
+            
         } catch(Exception e){
             e.printStackTrace();
         }

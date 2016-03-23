@@ -19,6 +19,7 @@ public class Interface {
     private ContextWrapper context;
     
     public Interface(){
+        initializeNative();
     }
     
     public native long initializeNative();

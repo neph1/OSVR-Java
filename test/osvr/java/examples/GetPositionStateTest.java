@@ -37,6 +37,7 @@ public class GetPositionStateTest {
             System.out.println("InterfaceState " + iface.getNativeHandle());
             OSVR_TimeValue timeValue = new OSVR_TimeValue();
             OSVR_Vec3 pose = new OSVR_Vec3();
+            context.update();
             int result = ifaceState.osvrGetPositionState(iface, timeValue, pose);
             System.out.println("result: " + result);
             System.out.println("pose vec: " + pose.toString());
