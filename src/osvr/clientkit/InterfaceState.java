@@ -27,7 +27,7 @@ public class InterfaceState {
      * Get Pose state from an interface, returning failure if none \ * exists.
      */
 
-    public native int osvrGetPoseState(Interface iface, OSVR_TimeValue timestamp, OSVR_Pose3 state);
+    public native int osvrGetPoseState(long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Pose3 state);
 
     /**
      *Get Position state from an interface, returning failure if none \ * exists.
@@ -35,7 +35,7 @@ public class InterfaceState {
      * @param OSVR_TimeValue
      * @return
      */
-    public native int osvrGetPositionState(Interface iface, OSVR_TimeValue timestamp, OSVR_Vec3 state);
+    public native int osvrGetPositionState(long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Vec3 state);
  	
  
     //public native int osvrGetOrientationState (Interface iface, OSVR_TimeValue timestamp, OSVR_OrientationState *state)

@@ -25,16 +25,11 @@ public class GetPoseStateTest {
         
         ContextWrapper context = new ContextWrapper();
         context.initialize("InterfaceTest");
-        Interface[] iface = new Interface[3];
+        Interface iface = new Interface();
         InterfaceState ifaceState;
         try{
-            iface[0] = new Interface();
-            iface[1] = new Interface();
-            iface[2] = new Interface();
-            context.getInterface("/me/head", iface[0]);
-//            context.getInterface("/me/hand/left", iface[1]);
-//            context.getInterface("/me/hand/right", iface[2]);
-            //iface.setNativeHandle(handle);
+            long handle = context.getInterface("/me/head", iface);
+//            iface[0].setNativeHandle(handle);
             Thread.sleep(2000);
             ifaceState = new InterfaceState();
             
@@ -44,7 +39,7 @@ public class GetPoseStateTest {
             while(i++ < 20){
                 context.update();
                 timeValue.setMilliSeconds((int)System.currentTimeMillis());
-                int result = ifaceState.osvrGetPoseState(iface[0], timeValue, pose);
+                int result = ifaceState.osvrGetPoseState(iface.getNativeHandle(), iface, timeValue, pose);
                 if(result > 0){
                     System.out.println("pose vec /me/head: " + pose.getTranslation().toString() + " "  + pose.getRotation().toString());
                 } else {
