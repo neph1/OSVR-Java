@@ -19,7 +19,15 @@ public class DisplayConfigTest {
         ContextWrapper context = new ContextWrapper();
         context.initialize("InterfaceTest");
         
-        OSVR_DisplayConfig display = new OSVR_DisplayConfig(context);
-        System.out.println(display);
+        OSVR_DisplayConfig display = null;
+        
+        while(display == null || !display.valid()){
+            display = new OSVR_DisplayConfig(context);
+        }
+        
+        
+        System.out.println(display.getNativeHandle());
+        
+        display.dispose();
     }
 }

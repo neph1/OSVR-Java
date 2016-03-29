@@ -25,6 +25,10 @@ public class OSVR_Quaternion{
         this.data = data;
     }
 
+    public String toString(){
+        return "w:" + data[0] + " x:" + data[1] + " y:" + data[2] + " z:" + data[3];
+    }
+    
     // NATIVE PART
     
     private long nativeHandle;
@@ -53,9 +57,5 @@ public class OSVR_Quaternion{
             dispose();
         }
         super.finalize();
-    }
-    
-    public String toString(){
-        return "w:" + data[0] + " x:" + data[1] + " y:" + data[2] + " z:" + data[3];
     }
 }
