@@ -15,6 +15,9 @@ import osvr.util.OSVR_Pose3;
  */
 public class OSVR_Viewer {
     
+    public OSVR_Viewer(){
+        initializeNative();
+    }
     private List<OSVR_Eye> eyes;
     
     public native int getNumEyes();

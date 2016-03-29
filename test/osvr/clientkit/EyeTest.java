@@ -11,7 +11,7 @@ import osvr.java.util.LibraryLoader;
  *
  * @author Rickard
  */
-public class DisplayConfigTest {
+public class EyeTest {
     
     public static void main(String[] args){
         LibraryLoader.loadLibraries();
@@ -29,6 +29,9 @@ public class DisplayConfigTest {
         
         display.getNumViewers();
         
+        OSVR_Eye eye = new OSVR_Eye();
+        display.getEye(0, 0, eye);
+        System.out.println(eye.getNativeHandle());
         display.dispose();
     }
 }
