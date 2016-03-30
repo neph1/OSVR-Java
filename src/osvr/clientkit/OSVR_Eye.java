@@ -17,13 +17,13 @@ public class OSVR_Eye {
     
     private List<OSVR_Surface> surfaces;
     
-    public native int getNumSurfaces();
-    
-    public native OSVR_Surface getSurface(int surface, OSVR_Surface holder);
-    
-    public native boolean getPose(OSVR_Pose3 pose);
-    
-    public native boolean getViewMatrix(int flags, float[][] viewMatrix);
+    public float[] getViewMatrix(float[] viewMatrix){
+        if(viewMatrix == null){
+            viewMatrix = new float[16];
+        }
+        getViewMatrix(0, viewMatrix);
+        return viewMatrix;
+    }
     
     public void setupEye(){
         surfaces = new ArrayList<OSVR_Surface>();
@@ -52,6 +52,14 @@ public class OSVR_Eye {
     public void setNativeHandle(long nativeHandle) {
         this.nativeHandle = nativeHandle;
     }
+    
+    public native int getNumSurfaces();
+    
+    public native OSVR_Surface getSurface(int surface, OSVR_Surface holder);
+    
+    public native boolean getPose(OSVR_Pose3 pose);
+    
+    public native boolean getViewMatrix(int flags, float[] viewMatrix);
     
     public void dispose(){
         disposed = true;

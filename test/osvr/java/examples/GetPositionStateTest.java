@@ -31,10 +31,8 @@ public class GetPositionStateTest {
             iface = new Interface();
             context.getInterface("/me/head", iface);
             //iface.setNativeHandle(handle);
-            System.out.println("Interface " + iface.getNativeHandle());
             
             ifaceState = new InterfaceState();
-            System.out.println("InterfaceState " + iface.getNativeHandle());
             OSVR_TimeValue timeValue = new OSVR_TimeValue();
             OSVR_Vec3 pose = new OSVR_Vec3();
             context.update();

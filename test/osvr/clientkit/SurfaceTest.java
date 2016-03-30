@@ -11,7 +11,7 @@ import osvr.java.util.LibraryLoader;
  *
  * @author Rickard
  */
-public class ViewerTest {
+public class SurfaceTest {
     
     public static void main(String[] args){
         LibraryLoader.loadLibraries();
@@ -20,19 +20,22 @@ public class ViewerTest {
         context.initialize("InterfaceTest");
         
         OSVR_DisplayConfig display = new OSVR_DisplayConfig(context);
-        boolean valid = display.valid();
-        while(!valid){
-            valid = display.valid();
-            System.out.println(valid);
+        while(!display.valid()){
+            display = new OSVR_DisplayConfig(context);
         }
         
         System.out.println(display.getNativeHandle());
         
         display.getNumViewers();
-        
         OSVR_Viewer v = new OSVR_Viewer();
         display.getViewer(0, v);
-        System.out.println(v.getNativeHandle());
+        System.out.println("Viewer " + v.getNativeHandle());
+        OSVR_Eye eye = new OSVR_Eye();
+        display.getEye(0, 0, eye);
+        System.out.println("Eye " + eye.getNativeHandle());
+        OSVR_Surface s = new OSVR_Surface();
+        display.getSurface(0, 0, 0, s);
+        System.out.println("Surface " + s.getNativeHandle());
         display.dispose();
     }
 }

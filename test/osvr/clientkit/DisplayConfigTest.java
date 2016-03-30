@@ -19,10 +19,11 @@ public class DisplayConfigTest {
         ContextWrapper context = new ContextWrapper();
         context.initialize("InterfaceTest");
         
-        OSVR_DisplayConfig display = null;
-        
-        while(display == null || !display.valid()){
-            display = new OSVR_DisplayConfig(context);
+        OSVR_DisplayConfig display = new OSVR_DisplayConfig(context);
+        boolean valid = display.valid();
+        while(!valid){
+            valid = display.valid();
+            System.out.println(valid);
         }
         
         System.out.println(display.getNativeHandle());

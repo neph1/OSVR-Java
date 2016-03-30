@@ -13,3 +13,4 @@ c/osvr_util_callback_OSVR_Callback.h
 c/osvr_util_callback_OSVR_PoseCallback.h
 c/osvr_java_examples_TrackerCallbackToJava.h
 c/osvr_util_callback_OSVR_Callback_CallbackType.h
+src/osvr/util/CPPObject.java
