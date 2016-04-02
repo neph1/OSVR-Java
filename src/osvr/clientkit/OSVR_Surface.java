@@ -34,6 +34,8 @@ public class OSVR_Surface {
     
     public native void disposeNative();
     
+    public native int getSurfaceID();
+    
     public long getNativeHandle() {
         return nativeHandle;
     }

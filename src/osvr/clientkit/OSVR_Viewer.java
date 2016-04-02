@@ -15,16 +15,27 @@ import osvr.util.OSVR_Pose3;
  */
 public class OSVR_Viewer {
     
+    private long viewerID = -1;
+    
     public OSVR_Viewer(){
         initializeNative();
     }
     private List<OSVR_Eye> eyes;
+    
+    public long getID(){
+        if(viewerID < 0){
+            viewerID = getViewerID();
+        }
+        return viewerID;
+    }
     
     public native int getNumEyes();
     
     public native OSVR_Eye getEye(int eye, OSVR_Eye holder);
     
     public native OSVR_Surface getSurface(int surface, OSVR_Surface holder);
+    
+    public native long getViewerID();
     
     public native boolean getPose(OSVR_Pose3 pose);
     

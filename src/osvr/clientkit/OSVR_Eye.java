@@ -17,6 +17,8 @@ public class OSVR_Eye {
     
     private List<OSVR_Surface> surfaces;
     
+    private int eyeID = -1;
+    
     public float[] getViewMatrix(float[] viewMatrix){
         if(viewMatrix == null){
             viewMatrix = new float[16];
@@ -36,6 +38,13 @@ public class OSVR_Eye {
         }
     }
     
+    public int getID(){
+        if(eyeID < 0){
+            eyeID = getEyeID();
+        }
+        return eyeID;
+    }
+    
     // NATIVE PART
     
     private long nativeHandle;
@@ -44,6 +53,8 @@ public class OSVR_Eye {
     public native void initializeNative();
     
     public native void disposeNative();
+    
+    public native int getEyeID();
     
     public long getNativeHandle() {
         return nativeHandle;

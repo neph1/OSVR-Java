@@ -45,7 +45,7 @@ public class OSVR_DisplayConfig {
     
     public native OSVR_Viewer getViewer(int viewer, OSVR_Viewer holder);
     
-    public native OSVR_Eye getEye(int viewer, int eye, OSVR_Eye holder);
+    public native OSVR_Eye getEye(long viewer, int eye, OSVR_Eye holder);
     
     public native OSVR_Surface getSurface(int viewer, int eye, int surface, OSVR_Surface holder);
 
@@ -54,6 +54,8 @@ public class OSVR_DisplayConfig {
     private long nativeHandle;
     private boolean disposed;
 
+//    public native void initializeNative(long contextHandle);
+    
     public native void initializeNative(ContextWrapper context);
     
     public native void disposeNative();

@@ -91,6 +91,8 @@
             <class name="osvr.util.OSVR_Vec3"/>
             <class name="osvr.util.OSVR_RadialDistortionParameters"/>
             <class name="osvr.util.OSVR_Button"/>
+            <class name="osvr.util.OSVR_Button"/>
+            <class name="osvr.clientkit.DisplayHelper"/>
         </javah>
         
         <copy todir="C:\Users\Rickard\Documents\GitHub\OSVR-Java-Wrapper\">

@@ -20,10 +20,8 @@ public class ViewerTest {
         context.initialize("InterfaceTest");
         
         OSVR_DisplayConfig display = new OSVR_DisplayConfig(context);
-        boolean valid = display.valid();
-        while(!valid){
-            valid = display.valid();
-            System.out.println(valid);
+        while(!display.valid()){
+            display = new OSVR_DisplayConfig(context);
         }
         
         System.out.println(display.getNativeHandle());

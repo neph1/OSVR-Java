@@ -25,7 +25,6 @@ public class ContextWrapper {
     
     public native boolean checkStatus();
     
-    
     public native long getInterface(String name, Interface holder);
     
     // public native void free(String name);
