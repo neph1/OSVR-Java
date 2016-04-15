@@ -11,6 +11,10 @@ package osvr.clientkit;
  */
 public class DisplayC {
     
+    public native void setDisplayConfig(OSVR_DisplayConfig displayConfig);
+    
+    public native void dispose();
+    
     public native int osvrClientGetNumDisplayInputs(OSVR_DisplayConfig displayConfig);
     
     public native int osvrClientGetNumViewers(OSVR_DisplayConfig displayConfig);

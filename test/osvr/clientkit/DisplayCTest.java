@@ -68,10 +68,16 @@ public class DisplayCTest {
             System.out.println("viewport " + i + " " + viewport[i]);
         }
         
-        float[]viewMatrix = new float[16];
+        float[] viewMatrix = new float[16];
         displayC.osvrClientGetViewerEyeViewMatrixf(display, 0, 0, 0, viewMatrix);
         for(int i = 0; i < 16; i++){
             System.out.println("viewmatrix " + i + " " + viewMatrix[i]);
+        }
+        
+        float[] projMatrix = new float[16];
+        displayC.osvrClientGetViewerEyeSurfaceProjectionMatrixf(display, 0, 0, 0, 0.5f, 512f, 0, projMatrix);
+        for(int i = 0; i < 16; i++){
+            System.out.println("projMatrix " + i + " " + projMatrix[i]);
         }
         context.dispose();
         display.dispose();
