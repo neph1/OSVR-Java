@@ -8,6 +8,7 @@ package osvr.clientkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import osvr.java.util.LibraryLoader;
+import osvr.util.OSVR_RadialDistortionParameters;
 
 /**
  *
@@ -67,21 +68,37 @@ public class DisplayCTest {
         for(int i = 0; i < 4; i++){
             System.out.println("viewport " + i + " " + viewport[i]);
         }
+        displayC.releaseIntArray(viewport);
         
         float[] viewMatrix = new float[16];
         displayC.osvrClientGetViewerEyeViewMatrixf(display, 0, 0, 0, viewMatrix);
         for(int i = 0; i < 16; i++){
             System.out.println("viewmatrix " + i + " " + viewMatrix[i]);
         }
+        displayC.releaseFloatArray(viewMatrix);
         
         float[] projMatrix = new float[16];
         displayC.osvrClientGetViewerEyeSurfaceProjectionMatrixf(display, 0, 0, 0, 0.5f, 512f, 0, projMatrix);
         for(int i = 0; i < 16; i++){
             System.out.println("projMatrix " + i + " " + projMatrix[i]);
         }
+        displayC.releaseFloatArray(projMatrix);
+        
+        boolean wantDist = displayC.osvrClientDoesViewerEyeSurfaceWantDistortion(display, 0, 0, 0);
+        System.out.println("wantDist " + wantDist);
+        
+        int priority = displayC.osvrClientGetViewerEyeSurfaceRadialDistortionPriority(display, 0, 0, 0);
+        System.out.println("priority " + priority);
+        
+        OSVR_RadialDistortionParameters params = new OSVR_RadialDistortionParameters();
+        displayC.osvrClientGetViewerEyeSurfaceRadialDistortion(display, 0, 0, 0, params);
+        System.out.println("center " + params.getCenterOfProjection());
+        System.out.println("k " + params.getK1());
+        
+        displayC.releaseDoubleArray(params.getCenterOfProjection().getData());
+        displayC.releaseDoubleArray(params.getK1().getData());
+        
         context.dispose();
         display.dispose();
-        
-        
     }
 }

@@ -5,13 +5,53 @@
  */
 package osvr.clientkit;
 
+import osvr.util.OSVR_RadialDistortionParameters;
+
 /**
  *
  * @author reden (neph1@github)
  */
 public class DisplayC {
     
-    public native void setDisplayConfig(OSVR_DisplayConfig displayConfig);
+    private OSVR_DisplayConfig displayConfig;
+    
+    public int osvrClientGetNumDisplayInputs(){
+        return osvrClientGetNumDisplayInputs(displayConfig);
+    }
+    
+    public int osvrClientGetNumViewers(){
+        return osvrClientGetNumViewers(displayConfig);
+    }
+    
+    public int osvrClientGetNumEyesForViewer(int viewer){
+        return osvrClientGetNumEyesForViewer(displayConfig, viewer);
+    }
+    
+    public int osvrClientGetNumSurfacesForViewerEye(int viewer, int eye){
+        return osvrClientGetNumSurfacesForViewerEye(displayConfig, viewer, eye);
+    }
+    
+    public void osvrClientGetRelativeViewportForViewerEyeSurface(int viewer, int eye, int surface, int[] viewport){
+        osvrClientGetRelativeViewportForViewerEyeSurface(displayConfig, viewer, eye, surface, viewport);
+    }
+    
+    public void osvrClientGetViewerEyeSurfaceProjectionMatrixf(int viewer, int eye, int surface, float near, float far, int flags, float[] projectionMatrix){
+        osvrClientGetViewerEyeSurfaceProjectionMatrixf(displayConfig, viewer, eye, surface, near, far, flags, projectionMatrix);
+    }
+    
+    public void osvrClientGetViewerEyeViewMatrixf(int viewer, int eye, int flags, float[] viewMatrix){
+        osvrClientGetViewerEyeViewMatrixf(displayConfig, viewer, eye, flags, viewMatrix);
+    }
+    
+    public void osvrClientGetViewerEyeSurfaceRadialDistortion(int viewer, int eye, int surface, OSVR_RadialDistortionParameters params){
+        osvrClientGetViewerEyeSurfaceRadialDistortion(displayConfig, viewer, eye, surface, params);
+    }
+    
+    public void setDisplayConfig(OSVR_DisplayConfig config){
+        displayConfig = config;
+    }
+    
+    public native void setDisplayConfigNative(OSVR_DisplayConfig displayConfig);
     
     public native void dispose();
     
@@ -37,7 +77,13 @@ public class DisplayC {
     
     public native int osvrClientGetViewerEyeSurfaceRadialDistortionPriority(OSVR_DisplayConfig displayConfig, int viewer, int eye, int surface);
     
-//    public native void osvrClientGetViewerEyeSurfaceRadialDistortion(OSVR_DisplayConfig displayConfig, int displayInput, )
+    public native void osvrClientGetViewerEyeSurfaceRadialDistortion(OSVR_DisplayConfig displayConfig, int viewer, int eye, int surface, OSVR_RadialDistortionParameters params );
+    
+    public native void releaseFloatArray(float[] floatArray);
+    
+    public native void releaseIntArray(int[] intArray);
+    
+    public native void releaseDoubleArray(double[] doubleArray);
     
 //    public native boolean osvrClientGetViewerEyeSurfaceRadialDistortion
 }
