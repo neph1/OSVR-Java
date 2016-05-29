@@ -5,9 +5,13 @@
  */
 package osvr.java.examples;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import osvr.clientkit.ContextWrapper;
+import osvr.clientkit.DisplayCTest;
 import osvr.clientkit.Interface;
 import osvr.clientkit.InterfaceState;
+import osvr.clientkit.OSVRConstants;
 import osvr.java.util.LibraryLoader;
 import osvr.util.OSVR_Pose3;
 import osvr.util.OSVR_TimeValue;
@@ -25,6 +29,15 @@ public class GetPoseStateTest {
         
         ContextWrapper context = new ContextWrapper();
         context.initialize("InterfaceTest");
+        while (!context.checkStatus()) {
+            System.out.println("context not started ");
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GetPoseStateTest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            context.update();
+        }
         Interface iface = new Interface();
         InterfaceState ifaceState;
         try{
@@ -36,17 +49,18 @@ public class GetPoseStateTest {
             OSVR_TimeValue timeValue = new OSVR_TimeValue();
             OSVR_Pose3 pose = new OSVR_Pose3();
             int i = 0;
-            while(i++ < 20){
+            while(i++ < 100){
                 context.update();
                 timeValue.setMilliSeconds((int)System.currentTimeMillis());
-                int result = ifaceState.osvrGetPoseState(iface.getNativeHandle(), iface, timeValue, pose);
-                if(result > 0){
+                int result = ifaceState.osvrGetPoseState(iface.getNativeHandle(), timeValue, pose);
+                if(result == OSVRConstants.OSVR_RETURN_SUCCESS){
                     System.out.println("pose vec /me/head: " + pose.getTranslation().toString() + " "  + pose.getRotation().toString());
                 } else {
                     System.out.println("pose vec /me/head: not valid");
                 }
-                
-                Thread.sleep(400);
+                ifaceState.releaseDoubleArray(pose.getTranslation().getData());
+                ifaceState.releaseDoubleArray(pose.getRotation().getData());
+                Thread.sleep(100);
             }
             
         } catch(Exception e){

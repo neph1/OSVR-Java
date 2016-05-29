@@ -28,7 +28,7 @@ public class InterfaceState{
      * @param state
      * @return 1 if pose was retrieved
      **/
-    public native int osvrGetPoseState(long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Pose3 state);
+    public native int osvrGetPoseState(long interfaceHandle, OSVR_TimeValue timestamp, OSVR_Pose3 state);
 
     /**
      *Get Position state from an interface, returning failure if none \ * exists.
@@ -36,7 +36,7 @@ public class InterfaceState{
      * @param OSVR_TimeValue
      * @return 1 if position was retrieved
      */
-    public native int osvrGetPositionState(long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Vec3 state);
+    public native int osvrGetPositionState(long interfaceHandle, OSVR_TimeValue timestamp, OSVR_Vec3 state);
  	
  
     /**
@@ -47,7 +47,7 @@ public class InterfaceState{
      * @param state
      * @return 1 if position was retrieved
      */
-    public native int osvrGetOrientationState (long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Quaternion state);
+    public native int osvrGetOrientationState (long interfaceHandle, OSVR_TimeValue timestamp, OSVR_Quaternion state);
     
     /**
      * Get Button state from an interface  
@@ -55,7 +55,13 @@ public class InterfaceState{
      * @param OSVR_TimeValue
      * @return 
      */
-    public native int osvrGetButtonState (long interfaceHandle, Interface iface, OSVR_TimeValue timestamp, OSVR_Button state);
+    public native int osvrGetButtonState (long interfaceHandle, OSVR_TimeValue timestamp, OSVR_Button state);
+    
+   public native void releaseFloatArray(float[] floatArray);
+    
+    public native void releaseIntArray(int[] intArray);
+    
+    public native void releaseDoubleArray(double[] doubleArray);
     
 //OSVR_ReturnCode 	osvrGetAnalogState (OSVR_ClientInterface iface, struct OSVR_TimeValue *timestamp, OSVR_AnalogState *state)
 // 	Get Analog state from an interface  

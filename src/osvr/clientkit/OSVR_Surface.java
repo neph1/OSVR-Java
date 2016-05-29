@@ -13,7 +13,27 @@ import osvr.util.OSVR_RadialDistortionParameters;
  */
 public class OSVR_Surface {
     
-    public native RelativeViewport getRelativeViewport();
+    private int surfaceID = -1;
+    private RelativeViewport relativeViewport;
+    
+    public RelativeViewport getViewport(){
+        if(relativeViewport == null){
+            relativeViewport = new RelativeViewport();
+        }
+        return getRelativeViewport(relativeViewport);
+    }
+
+    public int getSurfaceID() {
+        return surfaceID;
+    }
+
+    public void setSurfaceID(int surfaceID) {
+        this.surfaceID = surfaceID;
+    }
+    
+    
+    
+    public native RelativeViewport getRelativeViewport(RelativeViewport relativeViewport);
     
     public native void getProjectionMatrix(float near, float far, int flags, float[][] projectionMatrix);
     
@@ -33,8 +53,6 @@ public class OSVR_Surface {
     public native void initializeNative();
     
     public native void disposeNative();
-    
-    public native int getSurfaceID();
     
     public long getNativeHandle() {
         return nativeHandle;

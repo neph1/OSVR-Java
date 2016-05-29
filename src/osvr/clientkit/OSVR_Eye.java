@@ -37,12 +37,13 @@ public class OSVR_Eye {
             surfaces.add(surface);
         }
     }
-    
-    public int getID(){
-        if(eyeID < 0){
-            eyeID = getEyeID();
-        }
+
+    public int getEyeID() {
         return eyeID;
+    }
+
+    public void setEyeID(int eyeID) {
+        this.eyeID = eyeID;
     }
     
     // NATIVE PART
@@ -54,7 +55,7 @@ public class OSVR_Eye {
     
     public native void disposeNative();
     
-    public native int getEyeID();
+//    public native int getEyeID();
     
     public long getNativeHandle() {
         return nativeHandle;

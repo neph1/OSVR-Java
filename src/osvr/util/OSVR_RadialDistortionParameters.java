@@ -13,6 +13,12 @@ public class OSVR_RadialDistortionParameters {
     private OSVR_Vec3 k1;
     private OSVR_Vec2 centerOfProjection;
 
+    public OSVR_RadialDistortionParameters(){
+        initializeNative();
+        k1 = new OSVR_Vec3();
+        centerOfProjection = new OSVR_Vec2();
+    }
+    
     public OSVR_Vec3 getK1() {
         return k1;
     }
