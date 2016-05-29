@@ -34,7 +34,7 @@ public class ContextWrapper {
     public native void dispose();
 
     public void initialize(String contextName){
-        long handle = initializeNative(contextName);
+        nativeHandle = initializeNative(contextName);
         //nativeHandle = handle;
     }
     

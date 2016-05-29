@@ -52,8 +52,9 @@ public class DisplayCTest {
             }
             context.update();
         }
-        
+        long startTime = System.currentTimeMillis();
         DisplayC displayC = new DisplayC();
+        displayC.setDisplayConfig(display);
         System.out.println("display " + display.getNativeHandle());
         int viewers = displayC.osvrClientGetNumViewers(display);
         System.out.println("viewers " + viewers);
@@ -66,16 +67,24 @@ public class DisplayCTest {
         int[] viewport = new int[4];
         displayC.osvrClientGetRelativeViewportForViewerEyeSurface(display, 0, 0, 0, viewport);
         for(int i = 0; i < 4; i++){
-            System.out.println("viewport " + i + " " + viewport[i]);
+            System.out.println("viewport 1 " + i + " " + viewport[i]);
+        }
+        displayC.releaseIntArray(viewport);
+        displayC.osvrClientGetRelativeViewportForViewerEyeSurface(display, 0, 1, 0, viewport);
+        for(int i = 0; i < 4; i++){
+            System.out.println("viewport 2 " + i + " " + viewport[i]);
         }
         displayC.releaseIntArray(viewport);
         
         float[] viewMatrix = new float[16];
-        displayC.osvrClientGetViewerEyeViewMatrixf(display, 0, 0, 0, viewMatrix);
-        for(int i = 0; i < 16; i++){
-            System.out.println("viewmatrix " + i + " " + viewMatrix[i]);
-        }
-        displayC.releaseFloatArray(viewMatrix);
+//        for(int j = 0; j < 100; j++){
+            displayC.osvrClientGetViewerEyeViewMatrixf(display, 0, 0, 0, viewMatrix);
+            for(int i = 0; i < 16; i++){
+                System.out.println("viewmatrix " + i + " " + viewMatrix[i]);
+            }
+
+            displayC.releaseFloatArray(viewMatrix);
+//        }
         
         float[] projMatrix = new float[16];
         displayC.osvrClientGetViewerEyeSurfaceProjectionMatrixf(display, 0, 0, 0, 0.5f, 512f, 0, projMatrix);
@@ -97,6 +106,10 @@ public class DisplayCTest {
         
         displayC.releaseDoubleArray(params.getCenterOfProjection().getData());
         displayC.releaseDoubleArray(params.getK1().getData());
+        
+        long testTime = System.currentTimeMillis() - startTime;
+        
+        System.out.println("Test took " + testTime + "ms");
         
         context.dispose();
         display.dispose();

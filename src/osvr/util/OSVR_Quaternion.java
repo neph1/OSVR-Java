@@ -24,6 +24,20 @@ public class OSVR_Quaternion{
     public void setData(double[] data) {
         this.data = data;
     }
+    
+    public void setData(double w, double x, double y, double z){
+        data[0] = w;
+        data[1] = x;
+        data[2] = y;
+        data[3] = z;
+    }
+    
+    public void set(OSVR_Quaternion quat){
+        data[0] = quat.data[0];
+        data[1] = quat.data[1];
+        data[2] = quat.data[2];
+        data[3] = quat.data[3];
+    }
 
     public String toString(){
         return "w:" + data[0] + " x:" + data[1] + " y:" + data[2] + " z:" + data[3];

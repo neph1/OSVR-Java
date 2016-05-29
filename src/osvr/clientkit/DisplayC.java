@@ -49,7 +49,10 @@ public class DisplayC {
     
     public void setDisplayConfig(OSVR_DisplayConfig config){
         displayConfig = config;
+        setDisplayConfigNative(config);
     }
+    
+    public native void initializeNative(ContextWrapper context);
     
     public native void setDisplayConfigNative(OSVR_DisplayConfig displayConfig);
     

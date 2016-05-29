@@ -25,6 +25,18 @@ public class OSVR_Vec3{
         this.data = data;
     }
     
+    public void setData(double x, double y, double z){
+        data[0] = x;
+        data[1] = y;
+        data[2] = z;
+    }
+    
+    public void set(OSVR_Vec3 vec){
+        data[0] = vec.data[0];
+        data[1] = vec.data[1];
+        data[2] = vec.data[2];
+    }
+    
     public String toString(){
         return "OSVR_Vec3 x: " + data[0] + " y: " + data[1] + " z: " + data[2];
     }

@@ -55,7 +55,10 @@ public class OSVR_Pose3{
     
     public void dispose(){
         disposed = true;
+        
         disposeNative();
+//        translation.dispose();
+//        rotation.dispose();
     }
 
     @Override
