@@ -6,13 +6,14 @@
 package osvr.java.examples.clients;
 
 import osvr.clientkit.ContextWrapper;
+import osvr.config.DisplayParameters;
 import osvr.java.util.LibraryLoader;
 
 /**
  *
  * @author reden (neph1@github)
  */
-public class DisplayParameters {
+public class TestDisplayParameters {
     public static void main(String[] args){
         LibraryLoader.loadLibraries();
         
@@ -22,6 +23,11 @@ public class DisplayParameters {
         String displayDescription = context.getStringParameter("/display");
         
         System.out.println(displayDescription);
+        
+//        OSVR_DisplayParameters displayParameters = new OSVR_DisplayParameters(displayDescription);
+       
+        DisplayParameters parameters =new DisplayParameters(displayDescription);
+        
         
         context.dispose();
     }
